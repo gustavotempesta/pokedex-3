@@ -1,15 +1,18 @@
 import React from 'react';
-import Cabecalho from '../Cabecalho';
 import ListaPokemon from '../ListaPokemon';
 import Busca from '../Busca'
+import styled from 'styled-components';
+
+const ConteudoHome = styled.div`
+    // definir espaçamentos padronizados
+`;
 
 function Home() {
     return ( 
-        <>
-            <Cabecalho/>
+        <ConteudoHome>
             <Busca/>
             <ListaPokemon/>
-        </>
+        </ConteudoHome>
      );
 }
 

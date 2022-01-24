@@ -13,6 +13,8 @@ const Card = styled.div`
     box-sizing: border-box;
     border-radius: 25px;
     
+    // a cor deve ser de acordo com o tipo
+
     background: #48D0B0;
 `;
 
@@ -44,6 +46,7 @@ const ImagemPokemon = styled.img`
     height: 122px
 `;
 
+// Quando chamado pelo Detalhes precisa exibir peso, tipo e altura, pelo Menu não
 
 function CardPokemon() {
     return ( 
@@ -51,6 +54,7 @@ function CardPokemon() {
             <NomePokemon>Nome Pokemon</NomePokemon>
             <NumeroPokemon>Numero Pokemon</NumeroPokemon>
             <Elipse>
+                {/* Vai receber a imagem do Pokemon de acordo com a API */}
                 <ImagemPokemon src={bulbasaur}/>
             </Elipse>
         </Card>
