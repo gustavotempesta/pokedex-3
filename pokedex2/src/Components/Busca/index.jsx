@@ -34,7 +34,7 @@ const BotaoBusca = styled.button`
 function Busca() {
     return ( 
         <Form>
-            <InputBusca type="text" id="pesquisa" placeholder="Digite o nome do Pokémon" class="input-busca" required=""/>
+            <InputBusca type="text" id="pesquisa" placeholder="Digite o nome do Pokémon" ClassName="input-busca" required=""/>
             <BotaoBusca>
                 Buscar
             </BotaoBusca>

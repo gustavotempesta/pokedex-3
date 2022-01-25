@@ -17,6 +17,13 @@ function ListaPokemon() {
         <Lista>
             <ListaItem>
                 <CardPokemon/>
+                <CardPokemon/>
+                <CardPokemon/>
+                <CardPokemon/>
+                <CardPokemon/>
+                <CardPokemon/>
+                <CardPokemon/>
+                <CardPokemon/>
             </ListaItem>
         </Lista>
      );

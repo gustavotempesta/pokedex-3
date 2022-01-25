@@ -1,0 +1,118 @@
+import React from 'react';
+import styled from 'styled-components';
+
+const Caixa = styled.div`
+    display: inline-block;
+    width: 38.54%;
+    height: 100%;
+    text-align: center;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-radius: 25px;
+`;
+
+const CaixaTitulo = styled.div`
+    height: 65.64px;
+    display: flex;
+    justify-content: space-between;
+
+    margin: 22px 15px 0 34px;
+`;
+
+const Voltar = styled.button`
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 28px;
+    width: 13px;
+    padding: 0px;
+
+    color: #FFFFFF;
+    background: #48D0B0;
+    border: none;
+
+    
+// Usar prop para o segundo botão voltar ficar transparente
+
+`;
+
+const NomePokemon = styled.h1`
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #FFFFFF;
+`;
+
+const NumeroPokemon = styled.h2`
+    margin-top: 4.69px;
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 18px;
+    color: rgba(0, 0, 0, 0.42);
+`;
+
+const Elipse = styled.div`
+    margin: 21.36px 0 0 55px;
+    width: 236px;
+    height: 236px;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+`;
+
+const ImagemPokemon = styled.img`
+    padding: 22px;
+    width: 190.68px;
+    height: 190.68px;
+`;
+
+const CaixaInfo = styled.div`
+    width: 259px;
+    height: 36px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 26px auto 0;
+`;
+
+const PesoAltura = styled.p`
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
+
+    color: #FFFFFF;
+`;
+
+const Tipo = styled.p`
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 16px;
+    color: #FFFFFF;
+`;
+
+// Quando chamado pelo Detalhes precisa exibir peso, tipo e altura, pelo Menu não
+
+
+function InfoCard() {
+    return ( 
+        <Caixa>
+            <CaixaTitulo>
+                <Voltar> {"<"} </Voltar>
+                <section>
+                    <NomePokemon>Nome Pokemon</NomePokemon>
+                    <NumeroPokemon>Numero Pokemon</NumeroPokemon>
+                </section>
+                <Voltar> {""} </Voltar>
+            </CaixaTitulo>
+            <Elipse>
+                {/* Vai receber a imagem do Pokemon de acordo com a API */}
+                <ImagemPokemon />
+            </Elipse>
+            <CaixaInfo>
+                <PesoAltura>0,0kg <br/>Weight</PesoAltura>
+                <Tipo>Tipo <br/> Type</Tipo>
+                <PesoAltura>0,0m <br/> Hight</PesoAltura>
+            </CaixaInfo>
+        </Caixa>
+     );
+}
+
+export default InfoCard;

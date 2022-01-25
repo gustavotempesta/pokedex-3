@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import bulbasaur from './bulbasaur.png'
 
 const Card = styled.div`
     padding: 22px 15px;
@@ -8,7 +7,7 @@ const Card = styled.div`
     width: 181px;
     height: 253px;
     text-align: center;
-    margin: 0 6% 0 0;
+    margin: 0 6% 6% 0;
     vertical-align: middle;
     box-sizing: border-box;
     border-radius: 25px;
@@ -55,7 +54,7 @@ function CardPokemon() {
             <NumeroPokemon>Numero Pokemon</NumeroPokemon>
             <Elipse>
                 {/* Vai receber a imagem do Pokemon de acordo com a API */}
-                <ImagemPokemon src={bulbasaur}/>
+                <ImagemPokemon />
             </Elipse>
         </Card>
      );
