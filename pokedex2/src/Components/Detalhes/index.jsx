@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import InfoCard from '../InfoCard';
 import Info from '../Info';
@@ -22,13 +22,40 @@ const Card = styled.div`
     // definir espaçamentos padronizados e o fundo deve ser da cor do tipo
 `;
 
+
 function Detalhes() {
+
+    const [pokemon, setPokemon] = useState({});
+    const [type, setType] = useState([]);
+    const [height, setHeight] = useState([]);
+    const [weight, setWeight] = useState([]);
+
+
+    useEffect(()=> {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons/bulbasaur")
+        xhr.addEventListener("load", function(){
+            var resposta = xhr.responseText;
+            var dadosPokemon = JSON.parse(resposta);
+            setPokemon(dadosPokemon);
+            
+            setType(dadosPokemon.types);
+            setHeight(dadosPokemon.height);
+            setWeight(dadosPokemon.weight);
+
+        });
+        xhr.send();
+    })   
+
     return ( 
         <ConteudoDetalhes>
-            <Card>
-                <InfoCard/>
-                <Info/>
+            { 
+            <Card type={type[0]}>
+                <InfoCard name={pokemon.name} id={pokemon.id} image={pokemon.image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit} />
+                {Info(pokemon.stats)}
             </Card>
+            }
+
         </ConteudoDetalhes>
      );
 }

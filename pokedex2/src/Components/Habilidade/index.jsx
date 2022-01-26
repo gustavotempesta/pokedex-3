@@ -36,7 +36,8 @@ const RetanguloNivel = styled.div`
     
 `
 
-function Habilidades() {
+function Habilidade() {
+
     return ( 
         <Itens>
             <Item>Habilidade</Item>
@@ -52,4 +53,4 @@ function Habilidades() {
      );
 }
 
-export default Habilidades;
+export default Habilidade;

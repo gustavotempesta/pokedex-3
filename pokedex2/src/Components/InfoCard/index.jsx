@@ -40,6 +40,7 @@ const NomePokemon = styled.h1`
     font-weight: 500;
     line-height: 28px;
     color: #FFFFFF;
+    text-transform: capitalize;
 `;
 
 const NumeroPokemon = styled.h2`
@@ -85,31 +86,33 @@ const Tipo = styled.p`
     font-weight: 500;
     font-size: 14px;
     line-height: 16px;
+    text-transform: capitalize;
+
     color: #FFFFFF;
 `;
 
 // Quando chamado pelo Detalhes precisa exibir peso, tipo e altura, pelo Menu não
 
 
-function InfoCard() {
+function InfoCard(props) {
+
     return ( 
         <Caixa>
             <CaixaTitulo>
                 <Voltar> {"<"} </Voltar>
                 <section>
-                    <NomePokemon>Nome Pokemon</NomePokemon>
-                    <NumeroPokemon>Numero Pokemon</NumeroPokemon>
+                    <NomePokemon>{props.name}</NomePokemon>
+                    <NumeroPokemon>#{props.id}</NumeroPokemon>
                 </section>
                 <Voltar> {""} </Voltar>
             </CaixaTitulo>
             <Elipse>
-                {/* Vai receber a imagem do Pokemon de acordo com a API */}
-                <ImagemPokemon />
+                <ImagemPokemon src={props.image}/>
             </Elipse>
             <CaixaInfo>
-                <PesoAltura>0,0kg <br/>Weight</PesoAltura>
-                <Tipo>Tipo <br/> Type</Tipo>
-                <PesoAltura>0,0m <br/> Hight</PesoAltura>
+                <PesoAltura>{props.weight}{props.weightunit} <br/> Weight</PesoAltura>       
+                <Tipo>{props.type} <br/> Type</Tipo>
+                <PesoAltura>{props.height}{props.heightunit}<br/> Height</PesoAltura>
             </CaixaInfo>
         </Caixa>
      );

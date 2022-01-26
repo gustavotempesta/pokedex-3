@@ -32,10 +32,9 @@ function ListaPokemon() {
             <ListaItem>
                 {pokemons.map(({id, name, image, types}) => {
                     return(
-                        <CardPokemon key={id} id={id} name={name} image={image} types={types}/>
+                        <CardPokemon key={id} id={id} name={name} image={image} type={types[0]}/>
                     );
-                })}
-                            
+                })}                       
             </ListaItem>
         </Lista>
     );

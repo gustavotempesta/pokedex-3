@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Habilidades from '../Habilidades';
+import Habilidade from '../Habilidade';
 
 const Caixa = styled.div`
     display: inline-block;
@@ -26,12 +26,12 @@ function Info() {
     return ( 
         <Caixa>
             <ConteudoCaixa>
-                <Habilidades/>
-                <Habilidades/>
-                <Habilidades/>
-                <Habilidades/>
-                <Habilidades/>
-                <Habilidades/>
+                <Habilidade/>
+                <Habilidade/>
+                <Habilidade/>
+                <Habilidade/>
+                <Habilidade/>
+                <Habilidade/>
             </ConteudoCaixa>
         </Caixa>
      );
