@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import CardPokemon from '../CardPokemon';
 
@@ -13,20 +13,32 @@ const ListaItem = styled.li`
 `;
 
 function ListaPokemon() {
+
+    const [pokemons, setPokemons] = useState([]);
+
+    useEffect(()=> {
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons")
+        xhr.addEventListener("load", function(){
+            var resposta = xhr.responseText;
+            var dadosPokemons = JSON.parse(resposta);
+            setPokemons(dadosPokemons);
+        });
+        xhr.send();
+    })
+
     return ( 
         <Lista>
             <ListaItem>
-                <CardPokemon/>
-                <CardPokemon/>
-                <CardPokemon/>
-                <CardPokemon/>
-                <CardPokemon/>
-                <CardPokemon/>
-                <CardPokemon/>
-                <CardPokemon/>
+                {pokemons.map(({id, name, image, types}) => {
+                    return(
+                        <CardPokemon key={id} id={id} name={name} image={image} types={types}/>
+                    );
+                })}
+                            
             </ListaItem>
         </Lista>
-     );
+    );
 }
 
 export default ListaPokemon;

@@ -22,6 +22,7 @@ const NomePokemon = styled.h1`
     font-weight: 500;
     line-height: 21px;
     color: #FFFFFF;
+    text-transform: capitalize;
 `;
 const NumeroPokemon = styled.h2`
     margin-top: 3px;
@@ -45,16 +46,13 @@ const ImagemPokemon = styled.img`
     height: 122px
 `;
 
-// Quando chamado pelo Detalhes precisa exibir peso, tipo e altura, pelo Menu não
-
-function CardPokemon() {
+function CardPokemon(props) {
     return ( 
         <Card>
-            <NomePokemon>Nome Pokemon</NomePokemon>
-            <NumeroPokemon>Numero Pokemon</NumeroPokemon>
+            <NomePokemon>{props.name}</NomePokemon>
+            <NumeroPokemon>#{props.id}</NumeroPokemon>
             <Elipse>
-                {/* Vai receber a imagem do Pokemon de acordo com a API */}
-                <ImagemPokemon />
+                <ImagemPokemon src = {props.image}/>
             </Elipse>
         </Card>
      );
