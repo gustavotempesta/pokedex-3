@@ -9,13 +9,15 @@ const Caixa = styled.div`
     vertical-align: middle;
     box-sizing: border-box;
     border-radius: 25px;
+
+    //background muda de cor de acordo com o tipo
+
 `;
 
 const CaixaTitulo = styled.div`
     height: 65.64px;
     display: flex;
     justify-content: space-between;
-
     margin: 22px 15px 0 34px;
 `;
 
@@ -27,12 +29,8 @@ const Voltar = styled.button`
     padding: 0px;
 
     color: #FFFFFF;
-    background: #48D0B0;
+    background: none;
     border: none;
-
-    
-// Usar prop para o segundo botão voltar ficar transparente
-
 `;
 
 const NomePokemon = styled.h1`
@@ -96,7 +94,8 @@ const Tipo = styled.p`
 
 function InfoCard(props) {
 
-    return ( 
+    return (
+
         <Caixa>
             <CaixaTitulo>
                 <Voltar> {"<"} </Voltar>

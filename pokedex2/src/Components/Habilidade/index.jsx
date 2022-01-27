@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
+
 const Itens = styled.div`
     display: flex;
     align-items: center;
@@ -10,18 +11,30 @@ const Itens = styled.div`
     box-sizing: border-box;
 `;
 
-const Item = styled.p`
+const Nome = styled.p`
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start;
     font-size: 16px;
     line-height: 19px;
+    width: 125px;
 
     font-weight: bold;
+    text-transform: capitalize;
 
-    // usar props para alterar para bold quando for nome da habilidade 
+    // unir Nome com valor e usar props para alterar para bold quando for nome da habilidade e tamanho
+    // substituir hifen por espaço
     
 `;
+
+const Valor = styled.p`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    line-height: 19px;
+    width: 18px;   
+`
 
 const Retangulo = styled.div`
     width: 320px;
@@ -30,27 +43,24 @@ const Retangulo = styled.div`
 `;
 
 const RetanguloNivel = styled.div`
-    width: ${75/100 * 320}px;
     height: 7px;
     background: #027FC5;
-    
-`
+`;
 
-function Habilidade() {
-
+function Habilidade(props) {
+    let valor = props.value;
     return ( 
         <Itens>
-            <Item>Habilidade</Item>
+            <Nome>{props.name}</Nome>
 
-            <Item>75</Item>
+            <Valor>{props.value}</Valor>
 
             <Retangulo>
-            <RetanguloNivel/>
+                <RetanguloNivel style={{ width: (valor)/100*320 + "px"}}/>
             </Retangulo>
             
         </Itens>
-        
-     );
+    );
 }
 
 export default Habilidade;
