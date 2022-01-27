@@ -9,9 +9,6 @@ const Caixa = styled.div`
     vertical-align: middle;
     box-sizing: border-box;
     border-radius: 25px;
-
-    //background muda de cor de acordo com o tipo
-
 `;
 
 const CaixaTitulo = styled.div`
@@ -95,7 +92,6 @@ const Tipo = styled.p`
 function InfoCard(props) {
 
     return (
-
         <Caixa>
             <CaixaTitulo>
                 <Voltar> {"<"} </Voltar>

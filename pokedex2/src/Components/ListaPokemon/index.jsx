@@ -2,14 +2,19 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import CardPokemon from '../CardPokemon';
 
-const Lista = styled.ul`
+const Lista = styled.div`
     padding: 40px 0 0 98px;
     width: 1080px;
     margin: 0 auto;
+    .invisivel{
+        display: none;
+    }
 `;
 
-const ListaItem = styled.li`
-    list-style: none;
+const Erro = styled.p`
+    color: rgba(0, 0, 0, 0.42);
+    font-size: 18px;
+    line-height: 21px;
 `;
 
 function ListaPokemon() {
@@ -29,13 +34,13 @@ function ListaPokemon() {
 
     return ( 
         <Lista>
-            <ListaItem>
-                {pokemons.map(({id, name, image, types}) => {
-                    return(
+            <Erro id='erro' className='invisivel'>Nenhum Pokémon foi encontrado, tente novamente.</Erro>
+            
+            {pokemons.map(({id, name, image, types}) => {
+                return(
                         <CardPokemon key={id} id={id} name={name} image={image} type={types[0]}/>
-                    );
-                })}                       
-            </ListaItem>
+                );
+            })}                       
         </Lista>
     );
 }

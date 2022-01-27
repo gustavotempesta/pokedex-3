@@ -2,19 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Card = styled.div`
-    padding: 22px 15px;
     display: inline-block;
+    margin: 0 6% 6% 0;
     width: 181px;
     height: 253px;
     text-align: center;
-    margin: 0 6% 6% 0;
+    padding: 22px 15px;
     vertical-align: middle;
     box-sizing: border-box;
     border-radius: 25px;
-    
-    // a cor deve ser de acordo com o tipo
-
-    background: #48D0B0;
 `;
 
 const NomePokemon = styled.h1`
@@ -97,9 +93,10 @@ function CardPokemon(props) {
 
     let cor = CorTipo(props.type);
 
+
     return ( 
-        <Card style={{background: cor}}>
-            <NomePokemon>{props.name}</NomePokemon>
+        <Card id='card' style={{background: cor} }>
+            <NomePokemon id='name'>{props.name}</NomePokemon>
             <NumeroPokemon>#{props.id}</NumeroPokemon>
             <Elipse>
                 <ImagemPokemon src = {props.image}/>

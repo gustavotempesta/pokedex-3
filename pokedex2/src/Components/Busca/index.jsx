@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const Form = styled.form`
@@ -32,9 +32,37 @@ const BotaoBusca = styled.button`
 `;
 
 function Busca() {
+
+    const [filtro,setFiltro] = useState("");
+
     return ( 
-        <Form>
-            <InputBusca type="text" id="pesquisa" placeholder="Digite o nome do Pokémon" ClassName="input-busca" required=""/>
+
+        <Form onSubmit={(event) => {
+            event.preventDefault();
+            var cards = document.querySelectorAll("#card");
+            cards.forEach(function (card){
+                card.classList.remove("invisivel");
+                }
+            )
+            document.querySelector("#erro").classList.add("invisivel")
+            var numinvisivel = 0;
+            cards.forEach(function (card){
+                var nome = card.querySelector("#name").textContent;
+                var expressao = new RegExp(filtro,"i");
+                if (!expressao.test(nome)){
+                    card.classList.add("invisivel");
+                    numinvisivel ++
+                }
+            })
+            if (numinvisivel === cards.length){
+                document.querySelector("#erro").classList.remove("invisivel")
+            }
+        }}>
+            <InputBusca
+                onChange={(event) => {
+                    setFiltro(event.target.value);
+                }}
+                type="text" id="pesquisa" placeholder="Digite o nome do Pokémon" required=""/>
             <BotaoBusca>
                 Buscar
             </BotaoBusca>
