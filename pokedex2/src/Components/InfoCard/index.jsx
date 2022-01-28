@@ -86,15 +86,17 @@ const Tipo = styled.p`
     color: #FFFFFF;
 `;
 
-// Quando chamado pelo Detalhes precisa exibir peso, tipo e altura, pelo Menu não
-
-
 function InfoCard(props) {
 
     return (
         <Caixa>
             <CaixaTitulo>
-                <Voltar> {"<"} </Voltar>
+                <Voltar 
+                    onClick={() => {
+                        props.voltar();
+                    }}>
+                    {"<"} 
+                </Voltar>
                 <section>
                     <NomePokemon>{props.name}</NomePokemon>
                     <NumeroPokemon>#{props.id}</NumeroPokemon>

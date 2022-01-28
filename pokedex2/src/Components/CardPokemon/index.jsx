@@ -96,7 +96,9 @@ function CardPokemon(props) {
         <Card 
             onClick={(event) => {
                 var nome = event.target.parentNode.id;
-                props.paginaDetalhes(nome);
+                if(nome !== ""){
+                    props.paginaDetalhes(nome);
+                }
             }}
             id={props.name} className='card' style={{background: cor} 
         }>

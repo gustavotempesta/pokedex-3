@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import Detalhes from '../Detalhes';
 import Home from '../Home';
 
@@ -8,14 +8,17 @@ function Navegacao() {
 
 
     function paginaDetalhes(nome) {
-        console.log(nome);
         setNomePokemon(nome);
         setPaginaAtual(1);
     }
 
+    function voltar() {
+        setPaginaAtual(0);
+    }
+
     const paginas = [
         <Home paginaDetalhes={paginaDetalhes}/>,
-        <Detalhes nome={nomePokemon} />
+        <Detalhes nome={nomePokemon} voltar={voltar}/>
     ] 
 
     return (

@@ -22,15 +22,15 @@ function ListaPokemon(props) {
     const [pokemons, setPokemons] = useState([]);
 
     useEffect(()=> {
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons")
         xhr.addEventListener("load", function(){
-            var resposta = xhr.responseText;
-            var dadosPokemons = JSON.parse(resposta);
+            const resposta = xhr.responseText;
+            const dadosPokemons = JSON.parse(resposta);
             setPokemons(dadosPokemons);
         });
         xhr.send();
-    })
+    },[])
 
     return ( 
         <Lista>

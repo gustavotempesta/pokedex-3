@@ -51,11 +51,11 @@ function Detalhes(props) {
     const [stats, setStats] = useState([])
 
     useEffect(()=> {
-        var xhr = new XMLHttpRequest();
+        const xhr = new XMLHttpRequest();
         xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons/" + props.nome)
         xhr.addEventListener("load", function(){
-            var resposta = xhr.responseText;
-            var dadosPokemon = JSON.parse(resposta);
+            const resposta = xhr.responseText;
+            const dadosPokemon = JSON.parse(resposta);
             setName(dadosPokemon.name);
             setId(dadosPokemon.id);
             setImage(dadosPokemon.image);       
@@ -65,7 +65,7 @@ function Detalhes(props) {
             setStats(dadosPokemon.stats);
         });
         xhr.send();
-    })   
+    },[])   
 
     function CorTipo(tipo) {
         if(tipo === "bug"){
@@ -118,7 +118,7 @@ function Detalhes(props) {
     return ( 
         <ConteudoDetalhes>
             <Card style={{background: cor}}>
-                <InfoCard name={name} id={id} image={image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit}/>
+                <InfoCard {...props} name={name} id={id} image={image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit}/>
 
                 <Caixa>
                     <ConteudoCaixa>
