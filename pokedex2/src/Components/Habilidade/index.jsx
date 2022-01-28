@@ -20,11 +20,7 @@ const Nome = styled.p`
     width: 125px;
 
     font-weight: bold;
-    text-transform: capitalize;
-
-    // unir Nome com valor e usar props para alterar para bold quando for nome da habilidade e tamanho
-    // substituir hifen por espaço
-    
+    text-transform: capitalize;   
 `;
 
 const Valor = styled.p`

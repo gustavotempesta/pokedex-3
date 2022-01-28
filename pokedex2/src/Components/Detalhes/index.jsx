@@ -14,11 +14,6 @@ export const Card = styled.div`
     height: 436px;
     border-radius: 25px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    
-    // a cor deve ser de acordo com o tipo
-
-
-    // definir espaçamentos padronizados e o fundo deve ser da cor do tipo
 `;
 
 const Caixa = styled.div`
@@ -112,14 +107,12 @@ function Detalhes(props) {
             return "none"
         }
     }
-
     let cor = CorTipo(type[0]);
 
     return ( 
         <ConteudoDetalhes>
             <Card style={{background: cor}}>
                 <InfoCard {...props} name={name} id={id} image={image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit}/>
-
                 <Caixa>
                     <ConteudoCaixa>
                         {stats.map(({name, value}) => {

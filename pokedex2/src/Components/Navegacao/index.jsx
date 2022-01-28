@@ -6,7 +6,6 @@ function Navegacao() {
     const [paginaAtual,setPaginaAtual] = useState(0);
     const [nomePokemon,setNomePokemon] = useState("");
 
-
     function paginaDetalhes(nome) {
         setNomePokemon(nome);
         setPaginaAtual(1);
