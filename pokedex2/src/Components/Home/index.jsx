@@ -7,11 +7,11 @@ const ConteudoHome = styled.div`
     // definir espaçamentos padronizados
 `;
 
-function Home() {
+function Home(props) {
     return ( 
         <ConteudoHome>
             <Busca/>
-            <ListaPokemon/>
+            <ListaPokemon {...props}/>
         </ConteudoHome>
      );
 }

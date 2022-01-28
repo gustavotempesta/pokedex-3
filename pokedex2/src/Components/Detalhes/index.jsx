@@ -41,8 +41,7 @@ const ConteudoCaixa = styled.div`
     padding: 88px 29px;
 `;
 
-
-function Detalhes() {
+function Detalhes(props) {
     const [name, setName] = useState();
     const [id, setId] = useState();
     const [image,setImage] = useState();
@@ -53,7 +52,7 @@ function Detalhes() {
 
     useEffect(()=> {
         var xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons/blastoise")
+        xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons/" + props.nome)
         xhr.addEventListener("load", function(){
             var resposta = xhr.responseText;
             var dadosPokemon = JSON.parse(resposta);

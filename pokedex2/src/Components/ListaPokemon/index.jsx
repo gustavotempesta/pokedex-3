@@ -17,7 +17,7 @@ const Erro = styled.p`
     line-height: 21px;
 `;
 
-function ListaPokemon() {
+function ListaPokemon(props) {
 
     const [pokemons, setPokemons] = useState([]);
 
@@ -34,11 +34,11 @@ function ListaPokemon() {
 
     return ( 
         <Lista>
-            <Erro id='erro' className='invisivel'>Nenhum Pokémon foi encontrado, tente novamente.</Erro>
+            <Erro className='invisivel erro'>Nenhum Pokémon foi encontrado, tente novamente.</Erro>
             
             {pokemons.map(({id, name, image, types}) => {
                 return(
-                        <CardPokemon key={id} id={id} name={name} image={image} type={types[0]}/>
+                    <CardPokemon {...props} key={id} id={id} name={name} image={image} type={types[0]}/>
                 );
             })}                       
         </Lista>

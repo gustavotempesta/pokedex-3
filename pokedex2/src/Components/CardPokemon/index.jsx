@@ -39,11 +39,10 @@ const Elipse = styled.div`
 const ImagemPokemon = styled.img`
     padding: 15px;
     width: 122px;
-    height: 122px
+    height: 122px;
 `;
 
 function CardPokemon(props) {
-
 
     function CorTipo(tipo) {
         if(tipo === "bug"){
@@ -93,12 +92,17 @@ function CardPokemon(props) {
 
     let cor = CorTipo(props.type);
 
-
     return ( 
-        <Card id='card' style={{background: cor} }>
-            <NomePokemon id='name'>{props.name}</NomePokemon>
+        <Card 
+            onClick={(event) => {
+                var nome = event.target.parentNode.id;
+                props.paginaDetalhes(nome);
+            }}
+            id={props.name} className='card' style={{background: cor} 
+        }>
+            <NomePokemon className='name'>{props.name}</NomePokemon>
             <NumeroPokemon>#{props.id}</NumeroPokemon>
-            <Elipse>
+            <Elipse id={props.name}>
                 <ImagemPokemon src = {props.image}/>
             </Elipse>
         </Card>
