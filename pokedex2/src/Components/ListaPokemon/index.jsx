@@ -3,9 +3,13 @@ import styled from 'styled-components';
 import CardPokemon from '../CardPokemon';
 
 const Lista = styled.div`
-    padding: 40px 0 0 98px;
-    width: 1080px;
+    padding: 22px 0 0 0;
+    width: 870px;
     margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; 
+
     .invisivel{
         display: none;
     }

@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Card = styled.div`
     display: inline-block;
-    margin: 0 6% 6% 0;
+    margin: 18px;
     width: 181px;
     height: 253px;
     text-align: center;
@@ -92,6 +92,13 @@ function CardPokemon(props) {
 
     let cor = CorTipo(props.type);
 
+    var numero = String(props.id);
+    var contadorDigitos = numero.length;
+    while(contadorDigitos < 3){
+        numero = "0" + numero;
+        contadorDigitos ++;
+    }
+
     return ( 
         <Card 
             onClick={(event) => {
@@ -103,7 +110,7 @@ function CardPokemon(props) {
             id={props.name} className='card' style={{background: cor} 
         }>
             <NomePokemon className='name'>{props.name}</NomePokemon>
-            <NumeroPokemon>#{props.id}</NumeroPokemon>
+            <NumeroPokemon>#{numero}</NumeroPokemon>
             <Elipse id={props.name}>
                 <ImagemPokemon src = {props.image}/>
             </Elipse>

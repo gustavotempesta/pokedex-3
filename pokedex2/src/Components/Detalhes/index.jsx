@@ -5,8 +5,10 @@ import Habilidade from '../Habilidade';
 
 const ConteudoDetalhes = styled.div`
     width: 1080px;    
-    padding: 63.13px 0 0 91px;
+    padding: 63.13px 0 0;
     margin: 0 auto;
+    display: flex;
+    justify-content: center;
 `;
 
 export const Card = styled.div`

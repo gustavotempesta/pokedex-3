@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-
 const Itens = styled.div`
     display: flex;
     align-items: center;
@@ -18,9 +17,8 @@ const Nome = styled.p`
     font-size: 16px;
     line-height: 19px;
     width: 125px;
-
-    font-weight: bold;
-    text-transform: capitalize;   
+    text-transform: capitalize;  
+    font-weight: bold; 
 `;
 
 const Valor = styled.p`
@@ -53,8 +51,7 @@ function Habilidade(props) {
 
             <Retangulo>
                 <RetanguloNivel style={{ width: (valor)/100*320 + "px"}}/>
-            </Retangulo>
-            
+            </Retangulo>            
         </Itens>
     );
 }

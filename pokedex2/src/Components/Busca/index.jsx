@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { executaBusca } from '../Models/busca';
 
 const Form = styled.form`
-    padding: 21.13px 0 0 98px;
-    width: 1080px;
+    width: 100%;
+    padding: 21.13px 0 0 0;
     margin: 0 auto;
 `;
 
 const InputBusca = styled.input`
     display: inline-block;
-    width: 70%;
+    width: 751px;
     padding: 14px 22px 15px 22px;
+    box-sizing: border-box;
     background: #FFFFFF;
     border: none;
     border-radius: 10px;
@@ -21,7 +23,7 @@ const InputBusca = styled.input`
 
 const BotaoBusca = styled.button`
     background: #3763AD;
-    width: 10%;
+    width: 109px;
     padding: 14px 0;
     margin-left: 10px;
     border-radius: 10px;
@@ -34,29 +36,11 @@ const BotaoBusca = styled.button`
 function Busca() {
 
     const [filtro,setFiltro] = useState("");
-
+    
     return ( 
-
         <Form onSubmit={(event) => {
             event.preventDefault();
-            var cards = document.querySelectorAll(".card");
-            cards.forEach(function (card){
-                card.classList.remove("invisivel");
-                }
-            )
-            document.querySelector(".erro").classList.add("invisivel")
-            var numinvisivel = 0;
-            cards.forEach(function (card){
-                var nome = card.querySelector(".name").textContent;
-                var expressao = new RegExp(filtro,"i");
-                if (!expressao.test(nome)){
-                    card.classList.add("invisivel");
-                    numinvisivel ++
-                }
-            })
-            if (numinvisivel === cards.length){
-                document.querySelector(".erro").classList.remove("invisivel")
-            }
+            executaBusca(filtro);            
         }}>
             <InputBusca
                 onChange={(event) => {
@@ -67,7 +51,7 @@ function Busca() {
                 Buscar
             </BotaoBusca>
         </Form>
-     );
+    );
 }
 
 export default Busca;

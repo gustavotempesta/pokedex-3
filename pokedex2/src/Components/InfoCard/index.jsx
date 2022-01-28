@@ -24,7 +24,6 @@ const Voltar = styled.button`
     line-height: 28px;
     width: 13px;
     padding: 0px;
-
     color: #FFFFFF;
     background: none;
     border: none;
@@ -73,7 +72,6 @@ const PesoAltura = styled.p`
     font-weight: 500;
     font-size: 18px;
     line-height: 21px;
-
     color: #FFFFFF;
 `;
 
@@ -82,14 +80,21 @@ const Tipo = styled.p`
     font-size: 14px;
     line-height: 16px;
     text-transform: capitalize;
-
     color: #FFFFFF;
 `;
 
 function InfoCard(props) {
 
+    var numero = String(props.id);
+    var contadorDigitos = numero.length;
+    while(contadorDigitos < 3){
+        numero = "0" + numero;
+        contadorDigitos ++;
+    }
+
     return (
         <Caixa>
+
             <CaixaTitulo>
                 <Voltar 
                     onClick={() => {
@@ -99,18 +104,23 @@ function InfoCard(props) {
                 </Voltar>
                 <section>
                     <NomePokemon>{props.name}</NomePokemon>
-                    <NumeroPokemon>#{props.id}</NumeroPokemon>
+                    <NumeroPokemon>
+                        #{numero}
+                    </NumeroPokemon>
                 </section>
                 <Voltar> {""} </Voltar>
             </CaixaTitulo>
+
             <Elipse>
                 <ImagemPokemon src={props.image}/>
             </Elipse>
+
             <CaixaInfo>
                 <PesoAltura>{props.weight}{props.weightunit} <br/> Weight</PesoAltura>       
                 <Tipo>{props.type} <br/> Type</Tipo>
                 <PesoAltura>{props.height}{props.heightunit}<br/> Height</PesoAltura>
             </CaixaInfo>
+
         </Caixa>
      );
 }
