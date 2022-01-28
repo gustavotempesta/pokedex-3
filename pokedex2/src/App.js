@@ -7,7 +7,7 @@ import Navegacao from './Components/Navegacao';
 function App() {
   return (
     <>
-      <GlobalStyle />
+      <GlobalStyle/>
       <Cabecalho/>
       <Navegacao/>
     </>

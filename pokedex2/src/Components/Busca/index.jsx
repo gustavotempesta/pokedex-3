@@ -42,14 +42,21 @@ function Busca() {
             event.preventDefault();
             executaBusca(filtro);            
         }}>
+            
             <InputBusca
                 onChange={(event) => {
                     setFiltro(event.target.value);
                 }}
-                type="text" id="pesquisa" placeholder="Digite o nome do Pokémon" required=""/>
+                type="text" 
+                id="pesquisa" 
+                placeholder="Digite o nome do Pokémon" 
+                required=""
+            />
+            
             <BotaoBusca>
                 Buscar
             </BotaoBusca>
+
         </Form>
     );
 }
