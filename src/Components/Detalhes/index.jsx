@@ -63,7 +63,7 @@ function Detalhes(props) {
             setStats(dadosPokemon.stats);
         });
         xhr.send();
-    },[])   
+    },[props.nome])   
 
     var cor = corTipo(type[0]);
 

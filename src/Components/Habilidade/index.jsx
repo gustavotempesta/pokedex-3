@@ -50,7 +50,7 @@ function Habilidade(props) {
             <Valor>{props.value}</Valor>
 
             <Retangulo>
-                <RetanguloNivel style={{ width: (valor)/100*320 + "px"}}/>
+                <RetanguloNivel style={{ width: valor + "%"}}/>
             </Retangulo>            
         </Itens>
     );
