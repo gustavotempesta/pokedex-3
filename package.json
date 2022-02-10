@@ -2,6 +2,7 @@
   "name": "pokedex2",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://gustavotempesta.github.io/pokedex-2/",  
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^12.1.2",
