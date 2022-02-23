@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { padronizaNumero } from '../Models/numero';
+import coracao from "../../assets/img/coracao.svg";
 
 const Caixa = styled.div`
     display: inline-block;
@@ -16,20 +17,20 @@ const CaixaTitulo = styled.div`
     height: 65.64px;
     display: flex;
     justify-content: space-between;
-    margin: 22px 15px 0 34px;
+    margin: 22px 32px 0;
 `;
 
-const Voltar = styled.button`
+const Botao = styled.button`
     font-weight: 500;
     font-size: 24px;
     line-height: 28px;
-    width: 13px;
+    width: 35px;
+    heigh: 30px;
     padding: 0px;
     color: #FFFFFF;
     background: none;
     border: none;
-    
-    cursor: ${(props) => (props.pointer ? "pointer" : "default")};
+    cursor: pointer;
 `;
 
 const NomePokemon = styled.h1`
@@ -94,16 +95,16 @@ function InfoCard(props) {
         <Caixa>
 
             <CaixaTitulo>
-                <Voltar pointer onClick={() => {props.voltar();}}>
+                <Botao onClick={() => {props.voltar();}}>
                     {"<"}
-                </Voltar>
+                </Botao>
                 <section>
                     <NomePokemon>{props.name}</NomePokemon>
                     <NumeroPokemon>#{numero}</NumeroPokemon>
                 </section>
-                <Voltar> 
-                    {""} 
-                </Voltar>
+                <Botao> 
+                    <img src={coracao} width="100%" alt="favoritar"/>
+                </Botao>
             </CaixaTitulo>
 
             <Elipse>
