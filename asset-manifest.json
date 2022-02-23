@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.js": "/pokedex-3/static/js/main.8adee09b.chunk.js",
+    "main.js.map": "/pokedex-3/static/js/main.8adee09b.chunk.js.map",
+    "runtime~main.js": "/pokedex-3/static/js/runtime~main.75040563.js",
+    "runtime~main.js.map": "/pokedex-3/static/js/runtime~main.75040563.js.map",
+    "static/js/2.91516d71.chunk.js": "/pokedex-3/static/js/2.91516d71.chunk.js",
+    "static/js/2.91516d71.chunk.js.map": "/pokedex-3/static/js/2.91516d71.chunk.js.map",
+    "index.html": "/pokedex-3/index.html",
+    "precache-manifest.8c4166b5789c575ad64b6ee7bf67d1e5.js": "/pokedex-3/precache-manifest.8c4166b5789c575ad64b6ee7bf67d1e5.js",
+    "service-worker.js": "/pokedex-3/service-worker.js",
+    "static/media/coracao.svg": "/pokedex-3/static/media/coracao.ef2decb1.svg",
+    "static/media/logo.svg": "/pokedex-3/static/media/logo.3cfd5e85.svg"
+  }
+}
