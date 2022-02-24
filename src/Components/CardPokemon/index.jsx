@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { corTipo } from '../Models/cores';
 import { padronizaNumero } from '../Models/numero';
 import coracao from "../../assets/img/coracao.svg";
+import { Link } from 'react-router-dom';
 
 const Card = styled.div`
     display: inline-block;
@@ -14,6 +15,7 @@ const Card = styled.div`
     vertical-align: middle;
     box-sizing: border-box;
     border-radius: 25px;
+    cursor: pointer;
 `;
 
 const CaixaTitulo = styled.div`
@@ -28,7 +30,7 @@ const Botao = styled.button`
     border: none;
     padding: 0px;
 
-    cursor: ${(props) => (props.pointer ? "pointer" : "default")};
+    cursor: ${(props) => (props.grab ? "grab" : "pointer")};
 `;
 
 const NomePokemon = styled.h1`
@@ -52,7 +54,6 @@ const Elipse = styled.div`
     height: 151px;
     background: rgba(255, 255, 255, 0.4);
     border-radius: 50%;
-    cursor: pointer;
 `;
 
 const ImagemPokemon = styled.img`
@@ -61,46 +62,46 @@ const ImagemPokemon = styled.img`
     height: 122px;
 `;
 
-function CardPokemon(props) {
+function CardPokemon({ type, id, name, image, setNomePokemon }) {
 
-    var cor = corTipo(props.type);
-    var numero = padronizaNumero(String(props.id));
+    const cor = corTipo(type);
+    const numero = padronizaNumero(String(id));
 
     return (
-        <Card
-            onClick={(event) => {
-                var nome = event.target.parentNode.id;
-                if (nome !== "") {
-                    props.paginaDetalhes(nome);
-                }
-            }}
-            id={props.name}
-            className='card'
-            style={{ background: cor }
-            }>
+        <div>
+        <Link to={`/detalhes`}>
+            <Card
+                onClick={() => {
+                    setNomePokemon(name)
+                }}
+                id={name}
+                className='card'
+                style={{ background: cor }}
+                >
 
-            <CaixaTitulo>
-                <Botao>
-                {""}
-                </Botao>
-                <section>
-                    <NomePokemon className='name'>
-                        {props.name}
-                    </NomePokemon>
-                    <NumeroPokemon>
-                        #{numero}
-                    </NumeroPokemon>
-                </section>
-                <Botao pointer>
-                <img src={coracao} alt="favoritar"/>
-                </Botao>
-            </CaixaTitulo>
+                <CaixaTitulo>
+                    <Botao>
+                        {""}
+                    </Botao>
+                    <section>
+                        <NomePokemon className='name'>
+                            {name}
+                        </NomePokemon>
+                        <NumeroPokemon>
+                            #{numero}
+                        </NumeroPokemon>
+                    </section>
+                    <Botao grab>
+                        <img src={coracao} alt="favoritar" />
+                    </Botao>
+                </CaixaTitulo>
 
-            <Elipse id={props.name}>
-                <ImagemPokemon src={props.image} />
-            </Elipse>
-
-        </Card>
+                <Elipse id={name}>
+                    <ImagemPokemon src={image} />
+                </Elipse>
+            </Card>
+        </Link>
+        </div>
     );
 }
 

@@ -2,14 +2,14 @@ import React from 'react';
 
 import GlobalStyle from "./Components/GlobalStyle";
 import Cabecalho from './Components/Cabecalho';
-import Navegacao from './Components/Navegacao';
+import Rotas from './Components/Rotas';
 
 function App() {
   return (
     <>
       <GlobalStyle/>
       <Cabecalho/>
-      <Navegacao/>
+      <Rotas/>
     </>
   );
 }

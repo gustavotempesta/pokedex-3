@@ -46,24 +46,26 @@ function Detalhes(props) {
     const [type, setType] = useState([]);
     const [height, setHeight] = useState({});
     const [weight, setWeight] = useState({});
-    const [stats, setStats] = useState([])
+    const [stats, setStats] = useState([]);
 
     useEffect(()=> {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons/" + props.nome)
-        xhr.addEventListener("load", function(){
-            const resposta = xhr.responseText;
-            const dadosPokemon = JSON.parse(resposta);
-            setName(dadosPokemon.name);
-            setId(dadosPokemon.id);
-            setImage(dadosPokemon.image);       
-            setType(dadosPokemon.types);
-            setHeight(dadosPokemon.height);
-            setWeight(dadosPokemon.weight);
-            setStats(dadosPokemon.stats);
-        });
-        xhr.send();
-    },[props.nome])   
+        if(props.nomePokemon !== ""){
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons/" + props.nomePokemon)
+            xhr.addEventListener("load", function(){
+                const resposta = xhr.responseText;
+                const dadosPokemon = JSON.parse(resposta);
+                setName(dadosPokemon.name);
+                setId(dadosPokemon.id);
+                setImage(dadosPokemon.image);       
+                setType(dadosPokemon.types);
+                setHeight(dadosPokemon.height);
+                setWeight(dadosPokemon.weight);
+                setStats(dadosPokemon.stats);
+            });
+            xhr.send();
+        }
+    },[props.nomePokemon])   
 
     var cor = corTipo(type[0]);
 

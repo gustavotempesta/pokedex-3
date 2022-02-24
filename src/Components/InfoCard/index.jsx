@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { padronizaNumero } from '../Models/numero';
 import coracao from "../../assets/img/coracao.svg";
+import { useHistory } from 'react-router-dom';
 
 const Caixa = styled.div`
     display: inline-block;
@@ -30,7 +31,7 @@ const Botao = styled.button`
     color: #FFFFFF;
     background: none;
     border: none;
-    cursor: pointer;
+    cursor: ${(props) => (props.grab ? "grab" : "pointer")};
 `;
 
 const NomePokemon = styled.h1`
@@ -87,39 +88,43 @@ const Tipo = styled.p`
     color: #FFFFFF;
 `;
 
-function InfoCard(props) {
+function InfoCard({id, name, setNomePokemon, image, weight, weightunit, type, height, heightunit }) {
 
-    var numero = padronizaNumero(String(props.id));
+    var numero = padronizaNumero(String(id));
+    const history = useHistory();
 
     return (
         <Caixa>
 
             <CaixaTitulo>
-                <Botao onClick={() => {props.voltar();}}>
+                <Botao onClick={()=>{
+                    setNomePokemon("");
+                    history.push("/");
+                }}>
                     {"<"}
                 </Botao>
                 <section>
-                    <NomePokemon>{props.name}</NomePokemon>
+                    <NomePokemon>{name}</NomePokemon>
                     <NumeroPokemon>#{numero}</NumeroPokemon>
                 </section>
-                <Botao> 
+                <Botao grab> 
                     <img src={coracao} width="100%" alt="favoritar"/>
                 </Botao>
             </CaixaTitulo>
 
             <Elipse>
-                <ImagemPokemon src={props.image}/>
+                <ImagemPokemon src={image}/>
             </Elipse>
 
             <CaixaInfo>
                 <PesoAltura>
-                    {props.weight}{props.weightunit}<br/> Weight
+                    {weight}{weightunit}<br/> Weight
                 </PesoAltura>       
                 <Tipo>
-                    {props.type} <br/> Type
+                    {type} <br/> Type
                 </Tipo>
                 <PesoAltura>
-                    {props.height}{props.heightunit}<br/> Height
+                    {height}{heightunit}<br/> Height
                 </PesoAltura>
             </CaixaInfo>
 
