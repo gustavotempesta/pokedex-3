@@ -11,11 +11,11 @@ const ConteudoHome = styled.div`
     flex-wrap: wrap;
 `;
 
-function Home(props) {
+function Home() {
     return ( 
         <ConteudoHome>
             <Busca/>
-            <ListaPokemon {...props}/>
+            <ListaPokemon/>
         </ConteudoHome>
      );
 }

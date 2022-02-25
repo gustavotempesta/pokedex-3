@@ -2,8 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import { corTipo } from '../Models/cores';
 import { padronizaNumero } from '../Models/numero';
-import coracao from "../../assets/img/coracao.svg";
+import coracao_vazio from "../../assets/img/coracao_vazio.svg";
 import { Link } from 'react-router-dom';
+import { useFavoritosContext } from '../../common/context/Favoritos';
 
 const Card = styled.div`
     display: inline-block;
@@ -62,45 +63,49 @@ const ImagemPokemon = styled.img`
     height: 122px;
 `;
 
-function CardPokemon({ type, id, name, image, setNomePokemon }) {
+function CardPokemon({ type, id, name, image }) {
 
     const cor = corTipo(type);
     const numero = padronizaNumero(String(id));
 
+    const {toggleFavorito} = useFavoritosContext();
+
     return (
         <div>
-        <Link to={`/detalhes`}>
-            <Card
-                onClick={() => {
-                    setNomePokemon(name)
-                }}
-                id={name}
-                className='card'
-                style={{ background: cor }}
+            <Link to={`/detalhes/${name}`}>
+                <Card
+                    id={name}
+                    className='card'
+                    style={{ background: cor }}
                 >
 
-                <CaixaTitulo>
-                    <Botao>
-                        {""}
-                    </Botao>
-                    <section>
-                        <NomePokemon className='name'>
-                            {name}
-                        </NomePokemon>
-                        <NumeroPokemon>
-                            #{numero}
-                        </NumeroPokemon>
-                    </section>
-                    <Botao grab>
-                        <img src={coracao} alt="favoritar" />
-                    </Botao>
-                </CaixaTitulo>
+                    <CaixaTitulo>
+                        <Botao>
+                            {""}
+                        </Botao>
+                        <section>
+                            <NomePokemon className='name'>
+                                {name}
+                            </NomePokemon>
+                            <NumeroPokemon>
+                                #{numero}
+                            </NumeroPokemon>
+                        </section>
+                        <Botao grab
+                            onClick={(event)=>{
+                                event.preventDefault();
+                                toggleFavorito({id, name, image, type})
+                            }}
+                        >
+                            <img src={coracao_vazio} alt="favoritar" />
+                        </Botao>
+                    </CaixaTitulo>
 
-                <Elipse id={name}>
-                    <ImagemPokemon src={image} />
-                </Elipse>
-            </Card>
-        </Link>
+                    <Elipse id={name}>
+                        <ImagemPokemon src={image} />
+                    </Elipse>
+                </Card>
+            </Link>
         </div>
     );
 }

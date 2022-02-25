@@ -21,7 +21,7 @@ const Erro = styled.p`
     line-height: 21px;
 `;
 
-function ListaPokemon(props) {
+function ListaPokemon() {
 
     const [pokemons, setPokemons] = useState([]);
 
@@ -42,7 +42,7 @@ function ListaPokemon(props) {
             
             {pokemons.map(({id, name, image, types}) => {
                 return(
-                    <CardPokemon {...props} key={id} id={id} name={name} image={image} type={types[0]}/>
+                    <CardPokemon key={id} id={id} name={name} image={image} type={types[0]}/>
                 );
             })}                       
         </Lista>

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import InfoCard from '../InfoCard';
 import Habilidade from '../Habilidade';
 import { corTipo } from '../Models/cores';
+import { useParams } from 'react-router-dom';
 
 const ConteudoDetalhes = styled.div`
     width: 1080px;    
@@ -39,7 +40,7 @@ const ConteudoCaixa = styled.div`
     padding: 88px 29px;
 `;
 
-function Detalhes(props) {
+function Detalhes() {
     const [name, setName] = useState();
     const [id, setId] = useState();
     const [image,setImage] = useState();
@@ -48,24 +49,24 @@ function Detalhes(props) {
     const [weight, setWeight] = useState({});
     const [stats, setStats] = useState([]);
 
+    const {nome} = useParams();
+
     useEffect(()=> {
-        if(props.nomePokemon !== ""){
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", "https://pokedex-api-three.vercel.app/api/pokemons/" + props.nomePokemon)
-            xhr.addEventListener("load", function(){
-                const resposta = xhr.responseText;
-                const dadosPokemon = JSON.parse(resposta);
-                setName(dadosPokemon.name);
-                setId(dadosPokemon.id);
-                setImage(dadosPokemon.image);       
-                setType(dadosPokemon.types);
-                setHeight(dadosPokemon.height);
-                setWeight(dadosPokemon.weight);
-                setStats(dadosPokemon.stats);
-            });
-            xhr.send();
-        }
-    },[props.nomePokemon])   
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", `https://pokedex-api-three.vercel.app/api/pokemons/${nome}`)
+        xhr.addEventListener("load", function(){
+            const resposta = xhr.responseText;
+            const dadosPokemon = JSON.parse(resposta);
+            setName(dadosPokemon.name);
+            setId(dadosPokemon.id);
+            setImage(dadosPokemon.image);       
+            setType(dadosPokemon.types);
+            setHeight(dadosPokemon.height);
+            setWeight(dadosPokemon.weight);
+            setStats(dadosPokemon.stats);
+        });
+        xhr.send();
+    },[nome])   
 
     var cor = corTipo(type[0]);
 
@@ -73,7 +74,7 @@ function Detalhes(props) {
         <ConteudoDetalhes>
             <Card style={{background: cor}}>
                 
-                <InfoCard {...props} name={name} id={id} image={image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit}/>
+                <InfoCard name={name} id={id} image={image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit}/>
                 
                 <Caixa>
                     <ConteudoCaixa>

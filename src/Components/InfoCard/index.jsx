@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import { padronizaNumero } from '../Models/numero';
-import coracao from "../../assets/img/coracao.svg";
+import coracao_vazio from "../../assets/img/coracao_vazio.svg";
 import { useHistory } from 'react-router-dom';
+import { useFavoritosContext } from '../../common/context/Favoritos';
 
 const Caixa = styled.div`
     display: inline-block;
@@ -88,17 +89,17 @@ const Tipo = styled.p`
     color: #FFFFFF;
 `;
 
-function InfoCard({id, name, setNomePokemon, image, weight, weightunit, type, height, heightunit }) {
+function InfoCard({id, name, image, weight, weightunit, type, height, heightunit }) {
 
     var numero = padronizaNumero(String(id));
     const history = useHistory();
+    const {toggleFavorito} = useFavoritosContext();
 
     return (
         <Caixa>
 
             <CaixaTitulo>
                 <Botao onClick={()=>{
-                    setNomePokemon("");
                     history.push("/");
                 }}>
                     {"<"}
@@ -107,8 +108,13 @@ function InfoCard({id, name, setNomePokemon, image, weight, weightunit, type, he
                     <NomePokemon>{name}</NomePokemon>
                     <NumeroPokemon>#{numero}</NumeroPokemon>
                 </section>
-                <Botao grab> 
-                    <img src={coracao} width="100%" alt="favoritar"/>
+                <Botao grab
+                    onClick={(event) =>{
+                        event.preventDefault();
+                        toggleFavorito({id, name, image, type})
+                    }}
+                > 
+                    <img src={coracao_vazio} width="100%" alt="favoritar"/>
                 </Botao>
             </CaixaTitulo>
 
