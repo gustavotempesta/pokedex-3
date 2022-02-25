@@ -1,5 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { createContext, useState } from "react";
+import coracao_vazio from "../../assets/img/coracao_vazio.svg";
+import coracao_cheio from "../../assets/img/coracao_cheio.svg";
 
 export const FavoritosContext = createContext();
 FavoritosContext.displayName = "Pokemon";
@@ -24,12 +26,16 @@ export const useFavoritosContext = () => {
     }, [favorito])
 
     function toggleFavorito(pokemon) {
-        const temPokemon = favorito.some(pokemonFavorito => (pokemon.id === pokemonFavorito.id));
+        const temPokemon = eFavorito(pokemon.id);
         if (!temPokemon) {
             adicionaFavorito(pokemon);
         }else{
-            removeFavorito(pokemon)
+            removeFavorito(pokemon);
         }
+    }
+    
+    function eFavorito(id){
+        return favorito.some(pokemonFavorito => (id === pokemonFavorito.id));
     }
 
     function adicionaFavorito(pokemon) {
@@ -38,10 +44,18 @@ export const useFavoritosContext = () => {
 
     function removeFavorito(pokemon){
         setFavorito(favorito => favorito.filter(pokemonFavorito => pokemon.id !== pokemonFavorito.id))
-
     }
 
-    return { favorito, setFavorito, toggleFavorito}
+    function iconeFavorito(id){
+        if(eFavorito(id)){
+            return <img src={coracao_cheio} alt="favorito" width={"100%"}/>
+        }
+        return <img src={coracao_vazio} alt="Não é favorito" width={"100%"} />
+    }
+
+
+
+    return { favorito, setFavorito, toggleFavorito, iconeFavorito}
 }
 
 function getFavoritos(id) {

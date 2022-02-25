@@ -31,6 +31,7 @@ const BotaoBusca = styled.button`
     color: #FFCB05;
     font-size: 18px;
     font-weight: bold;
+    cursor: pointer;
 `;
 
 function Busca() {

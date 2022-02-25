@@ -68,7 +68,7 @@ function CardPokemon({ type, id, name, image }) {
     const cor = corTipo(type);
     const numero = padronizaNumero(String(id));
 
-    const {toggleFavorito} = useFavoritosContext();
+    const {toggleFavorito, iconeFavorito} = useFavoritosContext();
 
     return (
         <div>
@@ -97,7 +97,7 @@ function CardPokemon({ type, id, name, image }) {
                                 toggleFavorito({id, name, image, type})
                             }}
                         >
-                            <img src={coracao_vazio} alt="favoritar" />
+                            {iconeFavorito(id)}
                         </Botao>
                     </CaixaTitulo>
 

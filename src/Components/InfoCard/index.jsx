@@ -93,14 +93,14 @@ function InfoCard({id, name, image, weight, weightunit, type, height, heightunit
 
     var numero = padronizaNumero(String(id));
     const history = useHistory();
-    const {toggleFavorito} = useFavoritosContext();
+    const {toggleFavorito, iconeFavorito} = useFavoritosContext();
 
     return (
         <Caixa>
 
             <CaixaTitulo>
                 <Botao onClick={()=>{
-                    history.push("/");
+                    history.goBack();
                 }}>
                     {"<"}
                 </Botao>
@@ -114,7 +114,7 @@ function InfoCard({id, name, image, weight, weightunit, type, height, heightunit
                         toggleFavorito({id, name, image, type})
                     }}
                 > 
-                    <img src={coracao_vazio} width="100%" alt="favoritar"/>
+                    {iconeFavorito(id)}
                 </Botao>
             </CaixaTitulo>
 
