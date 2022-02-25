@@ -1,6 +1,7 @@
 import React from 'react';
 import logo from "../../assets/img/logo.svg";
 import styled from "styled-components";
+import { Link } from 'react-router-dom';
 
 const Header = styled.header`
     display: flex;
@@ -19,9 +20,9 @@ const Menu = styled.div`
     width: 150px;
 `;
 
-const Favoritos = styled.a`
-    text-decoration: underline;
+const Favoritos = styled.span`
     font-size: 15px;
+    :active: none;
 `;
 
 const Logo = styled.img`
@@ -34,9 +35,11 @@ function Cabecalho () {
     return ( 
         <Header>
             <Menu></Menu>
-            <Logo src={logo} alt="Logo Pokémon"/>
+            <Link to={"/"}>
+                <Logo src={logo} alt="Logo Pokémon"/>
+            </Link>
             <Menu>
-            ❤ <Favoritos>Meus Favoritos</Favoritos>
+            ❤ <Link to={"/favoritos"}><Favoritos>Meus Favoritos</Favoritos></Link>
             </Menu>
         </Header>
      );
