@@ -53,7 +53,9 @@ function Busca() {
                 required=""
             />
             
-            <BotaoBusca>
+            <BotaoBusca
+                type='submit'
+            >
                 Buscar
             </BotaoBusca>
 

@@ -77,7 +77,7 @@ export const usePokemonContext = () => {
 }
 
 function getFavoritos(id) {
-    const item = JSON.parse(localStorage.getItem(id));
+    let item = JSON.parse(localStorage.getItem(id));
     if (item === null) {
         item = [];
     }
