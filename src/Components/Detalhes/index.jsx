@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import InfoCard from '../InfoCard';
 import Habilidade from '../Habilidade';
@@ -22,7 +22,7 @@ export const Card = styled.div`
 
 const Caixa = styled.div`
     display: inline-block;
-    width: ${100-38.54}%;
+    width: ${100 - 38.54}%;
     height: 100%;
     text-align: center;
     vertical-align: middle;
@@ -41,52 +41,58 @@ const ConteudoCaixa = styled.div`
 `;
 
 function Detalhes() {
+
     const [name, setName] = useState();
     const [id, setId] = useState();
-    const [image,setImage] = useState();
+    const [image, setImage] = useState();
     const [type, setType] = useState([]);
     const [height, setHeight] = useState({});
     const [weight, setWeight] = useState({});
     const [stats, setStats] = useState([]);
 
-    const {nome} = useParams();
+    const { nome } = useParams();
 
-    useEffect(()=> {
-        const xhr = new XMLHttpRequest();
-        xhr.open("GET", `https://pokedex-api-three.vercel.app/api/pokemons/${nome}`)
-        xhr.addEventListener("load", function(){
-            const resposta = xhr.responseText;
-            const dadosPokemon = JSON.parse(resposta);
-            setName(dadosPokemon.name);
-            setId(dadosPokemon.id);
-            setImage(dadosPokemon.image);       
-            setType(dadosPokemon.types);
-            setHeight(dadosPokemon.height);
-            setWeight(dadosPokemon.weight);
-            setStats(dadosPokemon.stats);
-        });
-        xhr.send();
-    },[nome])   
+    useEffect(() => {
+        const buscaDetalhes = async () => {
+            try {
+                let resposta = await fetch(`https://pokedex-api-three.vercel.app/api/pokemons/${nome}`);
+                if (!resposta.ok) {
+                    throw new Error(`HTTP error: ${resposta.status}`);
+                }
+                let dadosPokemon = await resposta.json();
+                setName(dadosPokemon.name);
+                setId(dadosPokemon.id);
+                setImage(dadosPokemon.image);
+                setType(dadosPokemon.types);
+                setHeight(dadosPokemon.height);
+                setWeight(dadosPokemon.weight);
+                setStats(dadosPokemon.stats);
+            } catch (error) {
+                console.log(error.message)
+            }
+        }
+        buscaDetalhes();
+    }, [nome])
 
     var cor = corTipo(type[0]);
 
-    return ( 
+    return (
         <ConteudoDetalhes>
-            <Card style={{background: cor}}>
-                
-                <InfoCard name={name} id={id} image={image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit}/>
-                
+            <Card style={{ background: cor }}>
+
+                <InfoCard name={name} id={id} image={image} type={type[0]} height={height.value} heightunit={height.unit} weight={weight.value} weightunit={weight.unit} />
+
                 <Caixa>
                     <ConteudoCaixa>
-                        {stats.map(({name, value}) => {
-                            return(
-                                <Habilidade key={name} name={name} value={value}/>
+                        {stats.map(({ name, value }) => {
+                            return (
+                                <Habilidade key={name} name={name} value={value} />
                             );
                         })}
                     </ConteudoCaixa>
                 </Caixa>
-                
-            </Card>     
+
+            </Card>
         </ConteudoDetalhes>
     );
 }

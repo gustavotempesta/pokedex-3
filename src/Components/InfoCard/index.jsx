@@ -1,9 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { padronizaNumero } from '../Models/numero';
-import coracao_vazio from "../../assets/img/coracao_vazio.svg";
 import { useHistory } from 'react-router-dom';
-import { useFavoritosContext } from '../../common/context/Favoritos';
+import { usePokemonContext } from '../../common/context/Pokemon';
 
 const Caixa = styled.div`
     display: inline-block;
@@ -93,7 +92,7 @@ function InfoCard({id, name, image, weight, weightunit, type, height, heightunit
 
     var numero = padronizaNumero(String(id));
     const history = useHistory();
-    const {toggleFavorito, iconeFavorito} = useFavoritosContext();
+    const {toggleFavorito, iconeFavorito} = usePokemonContext();
 
     return (
         <Caixa>

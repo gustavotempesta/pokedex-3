@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { executaBusca } from '../Models/busca';
+import { usePokemonContext } from '../../common/context/Pokemon';
 
 const Form = styled.form`
     width: 100%;
@@ -35,8 +35,7 @@ const BotaoBusca = styled.button`
 `;
 
 function Busca() {
-
-    const [filtro,setFiltro] = useState("");
+    const {filtro, setFiltro, executaBusca} = usePokemonContext();
     
     return ( 
         <Form onSubmit={(event) => {

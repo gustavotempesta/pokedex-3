@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { useFavoritosContext } from '../../common/context/Favoritos';
+import { usePokemonContext } from '../../common/context/Pokemon';
 import CardPokemon from '../../Components/CardPokemon';
 
 const Conteudo = styled.div`
@@ -31,15 +31,11 @@ const Lista = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start; 
-
-    .invisivel{
-        display: none;
-    }
 `;
 
 
 function Favoritos() {
-    const { favorito } = useFavoritosContext();
+    const { favorito } = usePokemonContext();
 
     return (
         <Conteudo>

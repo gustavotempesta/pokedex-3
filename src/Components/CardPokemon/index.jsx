@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { corTipo } from '../Models/cores';
 import { padronizaNumero } from '../Models/numero';
-import coracao_vazio from "../../assets/img/coracao_vazio.svg";
 import { Link } from 'react-router-dom';
-import { useFavoritosContext } from '../../common/context/Favoritos';
+import { usePokemonContext } from '../../common/context/Pokemon';
 
 const Card = styled.div`
     display: inline-block;
@@ -41,6 +40,7 @@ const NomePokemon = styled.h1`
     color: #FFFFFF;
     text-transform: capitalize;
 `;
+
 const NumeroPokemon = styled.h2`
     margin-top: 3px;
     font-size: 15px;
@@ -68,14 +68,13 @@ function CardPokemon({ type, id, name, image }) {
     const cor = corTipo(type);
     const numero = padronizaNumero(String(id));
 
-    const {toggleFavorito, iconeFavorito} = useFavoritosContext();
+    const {toggleFavorito, iconeFavorito} = usePokemonContext();
 
     return (
         <div>
             <Link to={`/detalhes/${name}`}>
                 <Card
                     id={name}
-                    className='card'
                     style={{ background: cor }}
                 >
 
@@ -84,7 +83,7 @@ function CardPokemon({ type, id, name, image }) {
                             {""}
                         </Botao>
                         <section>
-                            <NomePokemon className='name'>
+                            <NomePokemon>
                                 {name}
                             </NomePokemon>
                             <NumeroPokemon>
