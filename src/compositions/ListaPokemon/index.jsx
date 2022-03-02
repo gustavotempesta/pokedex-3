@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { usePokemonContext } from '../../common/context/Pokemon';
-import CardPokemon from '../CardPokemon';
+import CardPokemon from '../../components/CardPokemon';
 
 const Lista = styled.div`
     padding: 22px 0 0 0;
@@ -19,10 +19,10 @@ const Erro = styled.p`
 `;
 
 function ListaPokemon() {
-    const {pokemonsFiltro, buscaApi} = usePokemonContext()
+    const {pokemonsFiltro, api} = usePokemonContext()
 
     useEffect(() => {
-        buscaApi("https://pokedex-api-three.vercel.app/api/pokemons")
+        api("https://pokedex-api-three.vercel.app/api/pokemons")
     }, [])
 
     return (
@@ -32,7 +32,6 @@ function ListaPokemon() {
                     <CardPokemon key={id} id={id} name={name} image={image} type={types[0]} />
                 );
             }))}
-
         </Lista>
     );
 }

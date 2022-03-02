@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { usePokemonContext } from '../../common/context/Pokemon';
-import CardPokemon from '../../Components/CardPokemon';
+import CardPokemon from '../../components/CardPokemon';
 
 const Conteudo = styled.div`
     width: 870px;    

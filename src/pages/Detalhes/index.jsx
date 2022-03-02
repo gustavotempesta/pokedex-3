@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
-import InfoCard from '../InfoCard';
-import Habilidade from '../Habilidade';
-import { corTipo } from '../Models/cores';
+import InfoCard from '../../compositions/InfoCard';
+import Habilidade from '../../components/Habilidade';
+import { corTipo } from '../../components/Models/cores';
 import { useParams } from 'react-router-dom';
 
 const ConteudoDetalhes = styled.div`
@@ -55,11 +55,11 @@ function Detalhes() {
     useEffect(() => {
         const buscaDetalhes = async () => {
             try {
-                let resposta = await fetch(`https://pokedex-api-three.vercel.app/api/pokemons/${nome}`);
+                const resposta = await fetch(`https://pokedex-api-three.vercel.app/api/pokemons/${nome}`);
                 if (!resposta.ok) {
                     throw new Error(`HTTP error: ${resposta.status}`);
                 }
-                let dadosPokemon = await resposta.json();
+                const dadosPokemon = await resposta.json();
                 setName(dadosPokemon.name);
                 setId(dadosPokemon.id);
                 setImage(dadosPokemon.image);
@@ -74,7 +74,7 @@ function Detalhes() {
         buscaDetalhes();
     }, [nome])
 
-    var cor = corTipo(type[0]);
+    const cor = corTipo(type[0]);
 
     return (
         <ConteudoDetalhes>

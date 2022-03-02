@@ -1,7 +1,7 @@
 import React from 'react';
-import ListaPokemon from '../ListaPokemon';
-import Busca from '../Busca'
 import styled from 'styled-components';
+import Busca from '../../components/Busca';
+import ListaPokemon from '../../compositions/ListaPokemon';
 
 const ConteudoHome = styled.div`
     width: 870px;    

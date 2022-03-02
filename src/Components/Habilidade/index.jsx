@@ -43,6 +43,10 @@ const RetanguloNivel = styled.div`
 
 function Habilidade(props) {
     let valor = props.value;
+    if(props.value > 100){
+        valor = 100;
+    }
+    
     return ( 
         <Itens>
             <Nome>{props.name}</Nome>

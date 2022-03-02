@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { corTipo } from '../Models/cores';
-import { padronizaNumero } from '../Models/numero';
 import { Link } from 'react-router-dom';
 import { usePokemonContext } from '../../common/context/Pokemon';
 
@@ -66,9 +65,8 @@ const ImagemPokemon = styled.img`
 function CardPokemon({ type, id, name, image }) {
 
     const cor = corTipo(type);
-    const numero = padronizaNumero(String(id));
 
-    const {toggleFavorito, iconeFavorito} = usePokemonContext();
+    const { toggleFavorito, iconeFavorito } = usePokemonContext();
 
     return (
         <div>
@@ -86,14 +84,12 @@ function CardPokemon({ type, id, name, image }) {
                             <NomePokemon>
                                 {name}
                             </NomePokemon>
-                            <NumeroPokemon>
-                                #{numero}
-                            </NumeroPokemon>
+                            <NumeroPokemon>#{String(id).padStart(3,"0")}</NumeroPokemon>
                         </section>
                         <Botao grab
-                            onClick={(event)=>{
+                            onClick={(event) => {
                                 event.preventDefault();
-                                toggleFavorito({id, name, image, type})
+                                toggleFavorito({ id, name, image, type })
                             }}
                         >
                             {iconeFavorito(id)}

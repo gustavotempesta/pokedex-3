@@ -1,13 +1,14 @@
 import React from 'react';
 
-import GlobalStyle from "./Components/GlobalStyle";
-import Cabecalho from './Components/Cabecalho';
+import GlobalStyle from "./components/GlobalStyle";
+import Cabecalho from './compositions/Cabecalho';
 import PokemonProvider from './common/context/Pokemon';
-import Home from './Components/Home';
-import Detalhes from './Components/Detalhes';
+import Detalhes from './pages/Detalhes';
 import Favoritos from './pages/Favoritos';
+import Home from './pages/Home';
 import { BrowserRouter } from 'react-router-dom';
 import { Route } from 'react-router-dom';
+
 
 function App() {
   return (

@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import { padronizaNumero } from '../Models/numero';
 import { useHistory } from 'react-router-dom';
 import { usePokemonContext } from '../../common/context/Pokemon';
 
@@ -90,7 +89,6 @@ const Tipo = styled.p`
 
 function InfoCard({id, name, image, weight, weightunit, type, height, heightunit }) {
 
-    var numero = padronizaNumero(String(id));
     const history = useHistory();
     const {toggleFavorito, iconeFavorito} = usePokemonContext();
 
@@ -105,7 +103,7 @@ function InfoCard({id, name, image, weight, weightunit, type, height, heightunit
                 </Botao>
                 <section>
                     <NomePokemon>{name}</NomePokemon>
-                    <NumeroPokemon>#{numero}</NumeroPokemon>
+                    <NumeroPokemon>#{String(id).padStart(3,"0")}</NumeroPokemon>
                 </section>
                 <Botao grab
                     onClick={(event) =>{
