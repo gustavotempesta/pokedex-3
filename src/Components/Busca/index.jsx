@@ -47,14 +47,14 @@ function Busca() {
                 onChange={(event) => {
                     setFiltro(event.target.value);
                 }}
+                value={filtro}
                 type="text" 
-                id="pesquisa" 
-                placeholder="Digite o nome do Pokémon" 
-                required=""
+                placeholder="Digite o nome do Pokémon"
             />
             
             <BotaoBusca
                 type='submit'
+                disabled={filtro.length === 0}
             >
                 Buscar
             </BotaoBusca>
